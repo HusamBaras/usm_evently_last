@@ -37,21 +37,7 @@ export default function Footer() {
     <footer className={`${currentStyle} p-4 shadow-md bg-opacity-50`}>
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         {/* Navigation Shortcuts */}
-        <div className="flex space-x-6 mb-4 md:mb-0">
-          <Link href="/home" className="hover:text-gold">
-            Home
-          </Link>
-          <a
-            href="#events"
-            onClick={handleEventsClick}
-            className="hover:text-gold cursor-pointer"
-          >
-            Events
-          </a>
-          <Link href="/payment" className="hover:text-gold">
-            Payment
-          </Link>
-        </div>
+        
 
         {/* Contact Information */}
         <p className="text-sm mb-4 md:mb-0 font-thin text-center">

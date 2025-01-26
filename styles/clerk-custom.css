@@ -1,0 +1,86 @@
+/* Customize the card container */
+.cl-card {
+    width:100%;
+    max-width: 600px;
+    height:600px;
+    border-radius: 10px !important;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2) !important;
+    background-color: #642392;
+    padding: 100px !important;
+  }
+  
+  /* Customize the title */
+  .cl-headerTitle {
+    font-size:30px !important;
+    font-weight: bold !important;
+    
+    color: #ffffff !important;
+    text-align: center !important;
+  }
+
+  .cl-headerSubtitle{
+    color: #ffffff;
+    font-size: 15px ;
+  }
+  
+  .cl-socialButtonsBlockButtonText{
+    color: black;
+    font-size: 15px;
+    
+    height: 20px;
+    width: 200px;
+    text-align: center;
+    
+  }
+  .cl-button{
+    border: 2px solid black;
+  }
+
+  /* Customize inputs */
+  .cl-input {
+    font-size: 1.2rem !important;
+    width: 270px;
+    border-radius: 5px !important;
+    position: relative;
+    left: -30px;
+  }
+  
+  /* Customize buttons */
+  .cl-formButtonPrimary{
+    font-size: 1.2rem !important;
+    padding: 14px 20px !important;
+    border-radius: 8px !important;
+    background-color: #ea9e0d !important;
+    color: white !important;
+    border: none !important;
+  }
+  
+  .cl-dividerText{
+    color: white;
+  }
+  
+  .cl-dividerLine{
+    background-color: black;
+  }
+  .cl-buttonPrimary:hover {
+    background-color: #d18b0c !important;
+  }
+  
+  .cl-formFieldLabel{
+    font: 40px;
+  }
+  /* Customize footer text */
+  .cl-footer {
+    font-size: 1rem !important;
+    text-align: center !important;
+    color: #777 !important;
+    background-color: #ea9e0d;
+  }
+  
+  .cl-footerActionText{
+    font-size:15px;
+  }
+  
+  .cl-footerActionLink{
+    font-size: 17px;
+  }

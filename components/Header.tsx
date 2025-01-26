@@ -25,18 +25,8 @@ export default function Header() {
     if (router.pathname === "/home") {
       return (
         <>
-          <Link
-            href="/profile"
-            className="px-4 py-2 bg-white text-usmPurple font-semibold rounded-lg shadow hover:bg-gray-200"
-          >
-            Profile
-          </Link>
-          <button
-            onClick={() => router.push("/register")} // Redirect to register page on logout
-            className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg shadow hover:bg-red-600"
-          >
-            Log out
-          </button>
+         
+          
         </>
       );
     }
@@ -90,9 +80,20 @@ export default function Header() {
               src="/usm-logo.png"
               alt="USM Logo"
               className="h-10 w-100 mr-4 cursor-pointer"
+              style={{
+                width: "100%", // Button takes full width of the box
+                position: "relative",
+                left: "500%",
+              }}
             />
           </Link>
-          <h1 className="text-xl forced-color-adjust-auto font-extrabold">
+          <h1 className="text-xl forced-color-adjust-auto font-extrabold"
+          style={{
+            fontSize: "30px", // Button takes full width of the box
+            position: "relative",
+            left: "20%",
+            fontFamily:"cursive",
+          }}>
             USM Evently
           </h1>
         </div>

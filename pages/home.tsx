@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -39,7 +39,7 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
         {/* Header */}
-        <Header />
+       
 
         {/* Main Content */}
         <main className="flex-grow p-8">
@@ -92,7 +92,7 @@ export default function Home() {
         </main>
 
         {/* Footer */}
-        <Footer />
+        
       </div>
     </div>
   );
