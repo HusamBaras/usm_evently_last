@@ -1,70 +1,96 @@
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+interface Event {
+  _id: string;
+  name: string;
+  date: string;
+  description: string;
+  posterUrl?: string;
+  googleFormLink?: string;
+}
 
 export default function UpcomingEventDetails() {
   const router = useRouter();
   const { id } = router.query;
 
-  // Dummy data for demonstration
-  const event = {
-    id,
-    name: `Upcoming Event ${id}`,
-    date: "2023-12-15",
-    description:
-      "This is the detailed description of an upcoming event. Get ready to experience an exciting day filled with knowledge sharing and networking opportunities.",
-    image: `/event${id}.jpg`,
-    location: "USM Main Hall, Penang",
-    time: "10:00 AM - 4:00 PM",
-  };
+  const [event, setEvent] = useState<Event | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (id) {
+      fetch(`/api/events/upcoming/${id}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch event details");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setEvent(data);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching event details:", error);
+          setIsLoading(false);
+        });
+    }
+  }, [id]);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Loading...
+      </div>
+    );
+  }
+
+  if (!event) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p>Event not found.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen">
       <Header />
-      <main className="flex-grow p-8 bg-gradient-to-br from-gray-200 to-gray-300">
+      <main className="flex-grow p-8 bg-gray-100">
         <div className="container mx-auto">
-          <Card className="rounded-lg shadow-xl overflow-hidden">
+          {/* Event Details Card */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            {/* Event Image */}
             <img
-              src={event.image}
+              src={event.posterUrl || "/placeholder.jpg"}
               alt={event.name}
               className="w-full h-72 object-cover"
             />
-            <CardHeader className="p-6 bg-gradient-to-r from-green-500 to-blue-500 text-white">
-              <CardTitle className="text-3xl font-bold">{event.name}</CardTitle>
-              <Badge className="mt-2 bg-green-500 text-black">
-                Upcoming Event
-              </Badge>
-            </CardHeader>
-            <CardContent className="p-6">
-              <p className="text-md text-gray-600 mb-2">
-                <strong>Date:</strong> {event.date}
+            {/* Event Info */}
+            <div className="p-6">
+              <h1 className="text-3xl font-bold text-gray-800">{event.name}</h1>
+              <p className="text-gray-600 mt-4">{event.description}</p>
+              <p className="text-gray-600 mt-2">
+                <strong>Date:</strong>{" "}
+                {new Date(event.date).toLocaleDateString()}
               </p>
-              <p className="text-md text-gray-600 mb-2">
-                <strong>Time:</strong> {event.time}
-              </p>
-              <p className="text-md text-gray-600 mb-4">
-                <strong>Location:</strong> {event.location}
-              </p>
-              <p className="text-gray-700 mb-6">{event.description}</p>
-              <div className="flex space-x-4">
-                <Button
-                  variant="default"
-                  onClick={() => alert("Added to calendar!")}
-                >
-                  Add to Calendar
-                </Button>
-                <Button
-                  variant="ghost"
-                  onClick={() => alert("Share this event!")}
-                >
-                  Share Event
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+              {/* Payment Button */}
+              {event.googleFormLink && (
+                <div className="mt-4">
+                  <Button
+                    variant="default"
+                    onClick={() => window.open(event.googleFormLink, "_blank")}
+                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                  >
+                    Go to Payment
+                  </Button>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </main>
       <Footer />

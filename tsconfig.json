@@ -11,12 +11,15 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "preserve", // Recommended JSX setting for React
     "incremental": true,
+    "baseUrl": ".", // Required for non-relative paths
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"], // Root alias for the entire project
+      "@/components/*": ["components/*"], // Alias for components
+      "@/utils/*": ["utils/*"] // Alias for utils
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".next"]
 }

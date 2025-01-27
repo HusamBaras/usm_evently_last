@@ -1,25 +1,34 @@
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/router";
+import { Event } from "@/lib/types";
+import { useEffect, useState } from "react";
 
 export default function PastEventDetails() {
   const router = useRouter();
   const { id } = router.query;
+  const [event, setEvent] = useState<Event | null>(null);
 
-  // Dummy data for demonstration
-  const event = {
-    id,
-    name: `Past Event ${id}`,
-    date: "2022-09-15",
-    description:
-      "This is the detailed description of a past event. It was a memorable occasion filled with learning and networking opportunities.",
-    image: `/past${id}.jpg`,
-    location: "USM Old Hall, Penang",
-    time: "9:00 AM - 3:00 PM",
-  };
+  useEffect(() => {
+    if (id) {
+      fetch(`/api/events/past/${id}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch event details");
+          }
+          return response.json();
+        })
+        .then((data) => setEvent(data))
+        .catch((error) => console.error("Failed to fetch event details", error));
+    }
+  }, [id]);
+
+  if (!event) {
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  }
 
   return (
     <div className="relative min-h-screen">
@@ -28,39 +37,30 @@ export default function PastEventDetails() {
         <div className="container mx-auto">
           <Card className="rounded-lg shadow-xl overflow-hidden">
             <img
-              src={event.image}
-              alt={event.name}
+              src={event.posterUrl || "/placeholder.jpg"}
+              alt={event.name || "Event"}
               className="w-full h-72 object-cover"
             />
-            <CardHeader className="p-6 bg-gradient-to-r from-purple-800 to-gold text-white">
-              <CardTitle className="text-3xl font-bold">{event.name}</CardTitle>
+            <CardHeader className="p-6 bg-gradient-to-r from-purple-800 to-yellow-500 text-white">
+              <CardTitle className="text-3xl font-bold">{event.name || "Past Event"}</CardTitle>
               <Badge className="mt-2 bg-yellow-500 text-black">Past Event</Badge>
             </CardHeader>
             <CardContent className="p-6">
               <p className="text-md text-gray-600 mb-2">
-                <strong>Date:</strong> {event.date}
-              </p>
-              <p className="text-md text-gray-600 mb-2">
-                <strong>Time:</strong> {event.time}
+                <strong>Date:</strong>{" "}
+                {event.date ? new Date(event.date).toLocaleDateString() : "No date available"}
               </p>
               <p className="text-md text-gray-600 mb-4">
-                <strong>Location:</strong> {event.location}
+                <strong>Description:</strong> {event.description || "No description available."}
               </p>
-              <p className="text-gray-700 mb-6">{event.description}</p>
-              <div className="flex space-x-4">
+              {event.photosLink && (
                 <Button
                   variant="default"
-                  onClick={() => alert("Map popup coming soon!")}
+                  onClick={() => window.open(event.photosLink, "_blank")}
                 >
-                  View Map
+                  View Event Photos
                 </Button>
-                <Button
-                  variant="ghost"
-                  onClick={() => alert("Feature not yet implemented")}
-                >
-                  Share Event
-                </Button>
-              </div>
+              )}
             </CardContent>
           </Card>
         </div>

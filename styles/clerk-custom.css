@@ -1,86 +1,165 @@
 /* Customize the card container */
 .cl-card {
-    width:100%;
-    max-width: 600px;
-    height:600px;
-    border-radius: 10px !important;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2) !important;
-    background-color: #642392;
-    padding: 100px !important;
-  }
-  
-  /* Customize the title */
-  .cl-headerTitle {
-    font-size:30px !important;
-    font-weight: bold !important;
-    
-    color: #ffffff !important;
-    text-align: center !important;
-  }
+  width:100%;
+  max-width: 600px;
+  height:600px;
+  border-radius: 10px !important;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2) !important;
+  background-color: #642392;
+  padding: 100px !important;
+}
 
-  .cl-headerSubtitle{
-    color: #ffffff;
-    font-size: 15px ;
-  }
+/* Customize the title */
+.cl-headerTitle {
+  font-size:30px !important;
+  font-weight: bold !important;
   
-  .cl-socialButtonsBlockButtonText{
-    color: black;
-    font-size: 15px;
-    
-    height: 20px;
-    width: 200px;
-    text-align: center;
-    
-  }
-  .cl-button{
-    border: 2px solid black;
-  }
+  color: #ffffff !important;
+  text-align: center !important;
+}
 
-  /* Customize inputs */
-  .cl-input {
-    font-size: 1.2rem !important;
-    width: 270px;
-    border-radius: 5px !important;
-    position: relative;
-    left: -30px;
-  }
+.cl-headerSubtitle{
+  color: #ffffff;
+  font-size: 15px ;
+}
+
+.cl-socialButtonsBlockButtonText{
+  color: rgb(255, 255, 255);
+  font-size: 15px;
   
-  /* Customize buttons */
-  .cl-formButtonPrimary{
-    font-size: 1.2rem !important;
-    padding: 14px 20px !important;
-    border-radius: 8px !important;
-    background-color: #ea9e0d !important;
-    color: white !important;
-    border: none !important;
-  }
+  height: 20px;
+  width: 200px;
+  text-align: center;
   
-  .cl-dividerText{
-    color: white;
-  }
-  
-  .cl-dividerLine{
-    background-color: black;
-  }
-  .cl-buttonPrimary:hover {
-    background-color: #d18b0c !important;
-  }
-  
-  .cl-formFieldLabel{
-    font: 40px;
-  }
-  /* Customize footer text */
-  .cl-footer {
-    font-size: 1rem !important;
-    text-align: center !important;
-    color: #777 !important;
-    background-color: #ea9e0d;
-  }
-  
-  .cl-footerActionText{
-    font-size:15px;
-  }
-  
-  .cl-footerActionLink{
-    font-size: 17px;
-  }
+}
+
+.cl-formFieldInputShowPasswordButton{
+  position: relative;
+  top: -32px;
+  left: 240px;
+  border: 1px solid grey;
+  width: 10px;
+
+
+}
+
+
+
+.cl-formFieldAction {
+  color: rgb(255, 255, 255);
+  font-size:15px;
+  position: relative;
+  left: -30px;
+
+}
+.cl-button{
+  border: 2px solid black;
+}
+
+/* Customize inputs */
+.cl-input {
+  font-size: 1.2rem !important;
+  width: 300px;
+  border-radius: 5px !important;
+  position: relative;
+  left: -30px;
+}
+
+/* Customize buttons */
+.cl-formButtonPrimary{
+  font-size: 1.2rem !important;
+  padding: 14px 20px !important;
+  border-radius: 8px !important;
+  background-color: #ea9e0d !important;
+  color: white !important;
+  border: none !important;
+  position: relative;
+  top: -20px;
+}
+
+.cl-dividerText{
+  color: white;
+}
+
+.cl-dividerLine{
+  background-color: black;
+}
+.cl-buttonPrimary:hover {
+  background-color: #d18b0c !important;
+}
+
+.cl-formFieldLabel{
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+  margin-left: -21px;
+}
+/* Customize footer text */
+.cl-footer {
+  font-size: 1rem !important;
+  text-align: center !important;
+  color: #ffffff !important;
+  background-color: #ea9e0d;
+}
+
+.cl-footerActionText{
+  font-size:15px;
+  color: #000000;
+}
+
+.cl-footerActionLink{
+  font-size: 17px;
+  color: #000000;
+  font-weight: bold;
+}
+
+.cl-alternativeMethodsBlockButtonText{
+  color: #ffffff;
+}
+
+.cl-alternativeMethodsBlockButton{
+  background-color: #ea9e0d;
+  height: 40px;
+}
+
+.cl-backLink{
+  color: white;
+}
+
+.cl-identityPreviewText{
+  color: rgb(197, 185, 185);
+}
+
+.cl-internal-16vtwdp{
+  color:rgb(253, 253, 253);
+}
+
+.cl-internal-wf8x4b{
+  color: white;
+}
+
+.cl-internal-1dauvpw{
+  background-color: #ffffff;
+  height: 12px;
+}
+
+.cl-avatarImage{
+  background-color: rgb(137, 0, 0);
+  width: 200px;
+  height: 200px;
+  position: relative;
+  left: 50px;
+}
+
+.cl-otpCodeFieldInput{
+  background-color: rgb(88, 85, 85);
+  width: 50%;
+  position: relative;
+  left: 10px;
+  color: white;
+}
+
+.cl-formResendCodeLink{
+  color: white;
+  font-size: 15px;
+  border: 1px solid #642392;
+}
